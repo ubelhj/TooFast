@@ -1,0 +1,16 @@
+Too Fast Plugin
+1|Enable plugin|too_fast_enabled
+9|Makes you way faster than your opponents in a LAN Match
+9|Speed multiplier applied each tick. Effectively is an acceleration force. Numbers below 1.005 will actually be slower than normal gameplay
+1|Enable speed multiplier|too_fast_speed_multiplier_enabled
+4|Speed multiplier|too_fast_speed_multiplier|1.005|1.1
+9|Maximum speed (forward or backward) where the plugin will accelerate you 
+9|If set low, will just help you hit supersonic faster
+9|If set high, will make you insanely mobile
+4|Acceleration max threshold|too_fast_speed_threshold|0|23000
+9|Increase your maximum car speed to go beyond supersonic (default rocket league value is 2300)
+9|You can edit this even further with f6 console `too_fast_max_speed 2300` 
+4|Max car speed|too_fast_max_speed|2300|23000
+9|Plugin commissioned by Striped 
+9|youtube.com/c/Striped
+9|Plugin made by JerryTheBee#1117 DM me on discord for custom plugins
