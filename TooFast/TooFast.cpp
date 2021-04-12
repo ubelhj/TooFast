@@ -9,6 +9,7 @@ bool enableSpeedMultiplier = false;
 float speedMultiplier = 1.01;
 float speedThreshold = 2300.0;
 float maxSpeed = 2300.0;
+float turnThreshold = 0.5;
 
 void TooFast::onLoad()
 {
@@ -52,8 +53,11 @@ void TooFast::onLoad()
 	cvarManager->registerCvar("too_fast_speed_threshold", "2300", "Speed where the plugin stops increasing acceleration (negative to disable)", true, true, -1, false, 2300)
 		.addOnValueChanged([this](std::string, CVarWrapper cvar) { speedThreshold = cvar.getFloatValue(); });
 	
-	cvarManager->registerCvar("too_fast_max_speed", "2300", "Sets new max speed for the main player", true, true, 0, false, 2300)
+	cvarManager->registerCvar("too_fast_max_speed", "2300", "Sets max speed for the main player", true, true, 0, false, 2300)
 		.addOnValueChanged([this](std::string, CVarWrapper cvar) { maxSpeed = cvar.getFloatValue(); });
+
+	cvarManager->registerCvar("too_fast_turn_threshold", "0.5", "Sets maximum turning for the acceleration to apply", true, true, 0, true, 1)
+		.addOnValueChanged([this](std::string, CVarWrapper cvar) { turnThreshold = cvar.getFloatValue(); });
 
 	//cvarManager->registerNotifier("too_fast_double_max_speed", [this](std::vector<std::string> params){ 
 	//	CarWrapper myCar = gameWrapper->GetLocalCar();
@@ -161,7 +165,7 @@ void TooFast::onTick(CarWrapper caller) {
 		return;
 	}
 
-	auto currentVelocity = myCar.GetVelocity();
+	Vector currentVelocity = myCar.GetVelocity();
 	float currSpeed = myCar.GetForwardSpeed();
 
 	if (!myCar.IsOnGround()) {
@@ -173,6 +177,12 @@ void TooFast::onTick(CarWrapper caller) {
 	}
 
 	if (std::abs(currSpeed) >= speedThreshold) {
+		return;
+	}
+
+	//cvarManager->log(std::to_string(input.Steer));
+
+	if (std::abs(input.Steer) > 0.5) {
 		return;
 	}
 
