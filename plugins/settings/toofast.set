@@ -11,6 +11,7 @@ Too Fast Plugin
 9|Increase your maximum car speed to go beyond supersonic (default rocket league value is 2300)
 9|You can edit this even further with f6 console `too_fast_max_speed 2300` 
 4|Max car speed|too_fast_max_speed|2300|23000
+8|
 9|Plugin commissioned by Striped 
 9|youtube.com/c/Striped
 9|Plugin made by JerryTheBee#1117 DM me on discord for custom plugins
